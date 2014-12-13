@@ -29,10 +29,14 @@ else
 	
 		PLM_current_object_selected = objNull;
 	
-		private ["_object", "_primary_weapon", "_action_menu_release_relative", "_action_menu_release_horizontal" , "_action_menu_45", "_action_menu_90", "_action_menu_180", "_item_direction"];
+		private ["_oldObjectID","_oldObjectUID","_oldObject","_object", "_primary_weapon", "_action_menu_release_relative", "_action_menu_release_horizontal" , "_action_menu_45", "_action_menu_90", "_action_menu_180", "_item_direction"];
 	
 		_object = _this select 0;
 		_object setVariable ["PLM_object_being_moved_by", player, true];
+		_oldObjectID = _object getVariable["ObjectID","0"];
+		_oldObjectUID = _object getVariable["ObjectUID","0"];
+		_oldObject = _object;
+
 		
 		PLM_object_player_is_moving = _object;
 		
@@ -138,6 +142,19 @@ else
 			};
 			
 			_object setVelocity [0, 0, 0];
+			
+			_dir= getDir _object;
+			_location= getPos _object;
+			_classname= typeOf _object;
+			
+			PVDZE_obj_Delete = [_oldObjectID,_oldObjectUID];
+			publicVariableServer "PVDZE_obj_Delete";
+			if (isServer) then {
+				PVDZE_obj_Delete call server_deleteObj;
+			};
+			
+			PVDZE_obj_Publish = [0,_object,[_dir,_location],_classname];
+			publicVariableServer "PVDZE_obj_Publish";
 			
 			player removeAction _action_menu_release_relative;
 			player removeAction _action_menu_release_horizontal;

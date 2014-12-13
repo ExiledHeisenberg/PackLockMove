@@ -46,7 +46,7 @@ while {true} do
 				// If the object is a movable/transportable object
 				if ({_object isKindOf _x} count _list_of_valid_objects > 0) then
 				{
-					diag_log (format ["PLM: (MONITOR_NEW) Initializing object: *%1*",_object]);
+					//diag_log (format ["PLM: (MONITOR_NEW) Initializing object: *%1*",_object]);
 
 					[_object] spawn PLM_FNCT_object_init;
 				};
@@ -55,7 +55,7 @@ while {true} do
 				// If the object is a transporter vehicle
 				if ({_object isKindOf _x} count PLM_transporter_classes > 0) then
 				{
-					diag_log (format ["PLM: (MONITOR_NEW) Transporter unit found: *%1*",_object]);
+					//diag_log (format ["PLM: (MONITOR_NEW) Transporter unit found: *%1*",_object]);
 
 					[_object] spawn PLM_FNCT_transport_init;
 				};

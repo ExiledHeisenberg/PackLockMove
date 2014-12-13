@@ -10,7 +10,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-diag_log ("PLM: (OBJECT MOVE) Initializing");
+//diag_log ("PLM: (OBJECT MOVE) Initializing");
 
 private ["_object", "_is_disabled", "_is_transported_by", "_is_moved_by", "_objectState", "_doLock", "_doUnlock","_currentAnim","_config","_onLadder"];
 

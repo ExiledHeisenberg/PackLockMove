@@ -4,7 +4,7 @@
  * @param 0 The transporting vehicle
  */
  
-diag_log ("PLM: (TRANS_INIT) Initializing");
+//diag_log ("PLM: (TRANS_INIT) Initializing");
 
 
 private ["_transport_vehicle", "_is_disabled", "_objects_charges"];
